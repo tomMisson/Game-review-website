@@ -1,0 +1,12 @@
+input {
+    margin: 15px;
+}
+
+footer {
+    background-color: #eee;
+    display: inline-block;
+}
+
+footer button {
+    text-align: right;
+}
