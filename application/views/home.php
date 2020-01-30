@@ -5,6 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="application/css/custom.css">
 
 <title><?php echo $title?></title>
 </head>
@@ -24,9 +25,10 @@
         </ul>
 
         <form class="form-inline my-2 my-lg-0" method="POST">
-            <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Login</button>
+            
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button class="btn btn-outline-info my-2 my-sm-1 login" type="submit">Login</button>
         </form>
       </div>
     </nav>
@@ -38,11 +40,19 @@
             <?php
             foreach ($result as $row)
             {
-                echo '<div class="card cardBodyWidth '.$cssBodyClass.'">';
-                // This is presuming you have a column in your database table called ReviewImage.
-                $thisImage = $row->ReviewImage;
-                // Look into the image properties library in CodeIgniter for more help on images: 
-                
+              $title = $row->GameName;
+              $desc = $row->GameBlurb;
+              $img = $row->ReviewImage;
+              $slug = $row->slug;
+              echo"
+              <div class='card' style='width: 18rem;'>
+                <img class='card-img-top' src='application/images/' alt='Card image'>
+                <div class='card-body'>
+                  <h5 class='card-title'>$title</h5>
+                  <p class='card-text'>$desc</p>
+                  <a href='reviews/$slug' class='btn btn-primary'>Learn more</a>
+                </div>
+              </div>";
             }
             ?>
         </div>
