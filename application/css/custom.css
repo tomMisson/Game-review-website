@@ -2,4 +2,22 @@
     margin: 10px;
 }
 
-footer {}
+.card {
+    margin: 20px;
+    text-align: center;
+}
+
+footer {
+    display: inline;
+}
+
+footer img {
+    float: left;
+    margin-left: 20px;
+}
+
+footer button {
+    float: right;
+    margin-right: 30px;
+    width: 150px;
+}

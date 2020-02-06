@@ -39,12 +39,12 @@ class Home extends CI_Controller{
             //The user does exist so change your page accordigly.
         }
 
-        
+        $data['body'] = 'home';
         // Get the data from our Home Model.
         $data['result'] = $this->HomeModel->getGame();
         
         //Load the view and send the data accross.
-        $this->load->view('home', $data);
+        $this->load->view('template', $data);
     }
 
     public function review($slug = NULL)
@@ -54,12 +54,4 @@ class Home extends CI_Controller{
         //More information on slugs can be found here: https://codeigniter.com/user_guide/tutorial/news_section.html
         
     }
-
-    //TODO: Create all other functions as required for further functionality (Comments, Login and so on.)
-    // Note: You can redirect to a page by using the redirect function as follows:
-    /*
-        //Redirect Home
-        redirect('http://localhost/games-review');
-    */
-  
 }
