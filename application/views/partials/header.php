@@ -1,3 +1,12 @@
+<?php 
+
+if(isset($_POST['loginBTN']))
+{
+    redirect('Login');
+}
+
+?>
+
 <html>
 <head>
 
@@ -9,7 +18,7 @@
 
 <title>Games Reviews</title>
 </head>
-<body>
+<body class="text-center">
   <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="<?php echo base_url();?>">Games Reviews</a>
@@ -25,10 +34,9 @@
         </ul>
 
         <form class="form-inline my-2 my-lg-0" method="POST">
-            
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            <button class="btn btn-outline-info my-2 my-sm-1 login" type="submit">Login</button>
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='searchtxt'>
+            <button name='searchBTN' class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            <button name='loginBTN' class="btn btn-outline-info my-2 my-sm-1 login" type="submit">Login</button>
         </form>
       </div>
     </nav>
