@@ -31,4 +31,14 @@ class Review extends CI_Controller{
         //Load the view and send the data accross.
         $this->load->view('template', $data);
     }
+
+    public function search($term)
+    {
+        $data['body'] = 'results';
+        $data['result'] = $this->ReviewModel->search($term);
+        
+        //Load the view and send the data accross.
+        $this->load->view('template', $data);
+    }
+
 }

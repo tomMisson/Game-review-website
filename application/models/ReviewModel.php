@@ -11,4 +11,10 @@ class ReviewModel extends CI_Model{
         $query = $this->db->query("SELECT DISTINCT * FROM `activereviews` WHERE slug ='$slug' LIMIT 1");
         return $query->result();
     }
+
+    public function search($term)
+    {
+        $query = $this->db->query("SELECT DISTINCT GameName, GameBlurb FROM `activereviews` WHERE slug LIKE '%$term%'");
+        return $query->result();
+    }
 }
