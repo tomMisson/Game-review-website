@@ -63,3 +63,8 @@ main {
     margin: 40px;
     min-height: 75vh;
 }
+
+#chatform {
+    visibility: hidden;
+    display: block;
+}

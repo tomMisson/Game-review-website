@@ -3,7 +3,9 @@ var io = require('socket.io')(app);
 var fs = require('fs');
 
 // Create a new server using the listen function, specifying the port number here.
-
+app.listen(8080, () => {
+    console.log("Server started");
+});
 // Handle if the user connecting is new or not.
 var newConnection = true;
 
@@ -20,7 +22,12 @@ function handler(req, res) {
         });
 }
 
+io.on('connection', (socket) => {
+    console.log('User connected to the server');
 
-io.on('connection', function(socket) {
-    //   Code your server here...
-});
+    io.on('client message', (data) => {
+        console.log(Date.now() + ' Client message: ' + data);
+        io.emit('server message', data);
+
+    })
+})
