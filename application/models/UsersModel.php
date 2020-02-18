@@ -16,6 +16,13 @@ class Users extends CI_Model
 
         return $query->result();
     }
+
+    public function validate_user($username, $password)
+    {
+        $this->db->query("SELECT username FROM users WHERE user_id = 1");
+
+        return $query->result();
+    }
 }
 
 ?>

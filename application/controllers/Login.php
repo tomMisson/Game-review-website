@@ -12,8 +12,7 @@ class Login extends CI_Controller{
         $this->load->helper('html');
         $this->load->helper('cookie');
 
-        // Load in your Models below.
-        $this->load->model('ReviewModel');
+        
     }
 
     public function index()
@@ -22,12 +21,11 @@ class Login extends CI_Controller{
         $this->load->view('template', $data);
     }
 
-    public function auth($token)
+    public function login()
     {
-        $data['body'] = 'review';
-        $data['result'] = $this->ReviewModel->getReview($slug);
-        
-        //Load the view and send the data accross.
-        $this->load->view('template', $data);
+        $email = $this->input->post('username');
+        $password = $this->input->post('password');
+
+
     }
 }
