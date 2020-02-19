@@ -2,7 +2,14 @@
 
 if(isset($_POST['loginBTN']))
 {
+  if(isset($_SESSION['loggedIn']))
+  {
+    redirect('Login/logout');
+  }
+  else
+  {
     redirect('Login');
+  }
 }
 
 ?>
@@ -46,7 +53,15 @@ if(isset($_POST['loginBTN']))
         <form class="form-inline my-2 my-lg-0" method="POST">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='searchtxt'>
             <button name='searchBTN' class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            <button name='loginBTN' class="btn btn-outline-info my-2 my-sm-1 login" type="submit">Login</button>
+            <?php
+            if(isset($_SESSION['loggedIn']))
+            {
+              echo " <button name='loginBTN' class='btn btn-outline-info my-2 my-sm-1 login' type='submit'>Logout</button>";
+            }
+            else{
+              echo "<button name='loginBTN' class='btn btn-outline-info my-2 my-sm-1 login' type='submit'>Login</button>";
+            }
+           ?>
         </form>
       </div>
     </nav>

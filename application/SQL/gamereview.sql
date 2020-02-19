@@ -88,8 +88,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`UID`, `UserName`, `UserPassword`, `DarkMode`) VALUES
-(1, 'Lecturer', 'Example', 1);
-
+(1, 'Lecturer', 'Example', 0);
+(2, 'Tom', 'password', 1);
 --
 -- Indexes for dumped tables
 --

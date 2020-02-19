@@ -1,27 +1,20 @@
 <?php
 
-class Users extends CI_Model
+class UsersModel extends CI_Model
 {
-    public function insert_user()
-    {
-        $data['username'] = 'TomMisson';
-        $data['password'] = 'Password';
 
-        $this->db->insert('users', $data);
-    }
-
-    public function select_users()
+    public function retrive_user_data($username)
     {
-        $this->db->query("SELECT username FROM users WHERE user_id = 1");
+        $query = $this->db->query("SELECT UID, UserName, DarkMode FROM users WHERE UserName='$username'");
 
         return $query->result();
     }
 
     public function validate_user($username, $password)
     {
-        $this->db->query("SELECT username FROM users WHERE user_id = 1");
+        $query = $this->db->query("SELECT UserName, UserPassword FROM users WHERE UserName='$username' and UserPassword='$password'");
 
-        return $query->result();
+        return count($query->result());
     }
 }
 

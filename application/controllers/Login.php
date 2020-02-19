@@ -12,7 +12,7 @@ class Login extends CI_Controller{
         $this->load->helper('html');
         $this->load->helper('cookie');
 
-        
+        $this->load->model('UsersModel');
     }
 
     public function index()
@@ -23,9 +23,35 @@ class Login extends CI_Controller{
 
     public function login()
     {
-        $email = $this->input->post('username');
+        $username = $this->input->post('username');
         $password = $this->input->post('password');
 
+        if($this->UsersModel->validate_user($username, $password)>=1)
+        {
+            $userData = $this->UsersModel->retrive_user_data($username);
 
+            foreach($userData as $user)
+            {
+                $darkmode = $user->DarkMode;
+                $UID = $user->UID;
+            }
+
+            $sessionData = array(
+
+                'username' => $username,
+                'dark_mode' => $darkmode,
+                'UID' => $UID,
+                'loggedIn' => TRUE
+            );
+
+            $this->session->set_userdata($sessionData);
+            redirect(base_url());
+        }
+    }
+
+    public function logout()
+    {
+        $_SESSION = array();
+        redirect(base_url());
     }
 }
