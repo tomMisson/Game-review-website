@@ -32,12 +32,10 @@ class Review extends CI_Controller{
         $this->load->view('template', $data);
     }
 
-    public function search($term)
+    public function search()
     {
+        $data['resultList'] = $this->ReviewModel->searchForReview($this->input->post('searchtxt'));
         $data['body'] = 'results';
-        $data['result'] = $this->ReviewModel->search($term);
-        
-        //Load the view and send the data accross.
         $this->load->view('template', $data);
     }
 

@@ -60,4 +60,5 @@ $route['account'] = 'Account';
 $route['response'] = 'Home/Comments';
 $route['response-user'] = 'Home/UserName';
 $route['404_override'] = '';
+$route['search/(:any)'] = 'Review/search';
 $route['translate_uri_dashes'] = FALSE;

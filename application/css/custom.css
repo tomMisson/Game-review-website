@@ -68,3 +68,24 @@ main {
     visibility: hidden;
     display: block;
 }
+
+aside {
+    float: left;
+}
+
+#reviewWrapper {
+    margin: 30px;
+    padding: 40px;
+}
+
+#commentSection {
+    border-top: 1px solid #000;
+    width: 60%;
+    float: right;
+    padding: 20px;
+}
+
+#contentSize {
+    clear: both;
+    width: 70%;
+}
