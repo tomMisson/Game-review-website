@@ -14,10 +14,10 @@
                 <aside>
                     <img src='$img' width='400' height='600'>
                 </aside>
-                <div id="contentSize">
+                <section>
                     <h6>$blurb</h6>
                     <p>$content</p>
-                </div>
+                </section>
             </div> 
 _END;
            

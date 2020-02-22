@@ -55,7 +55,6 @@ $route['review/(:any)'] = 'Review/review/$1';
 $route['review'] = 'home/review';
 $route['Login'] = 'Login';
 $route['Logout'] = 'Home/Logout';
-$route['login/getUserDetails'] = 'Login/GetUserDetails';
 $route['account'] = 'Account';
 $route['response'] = 'Home/Comments';
 $route['response-user'] = 'Home/UserName';

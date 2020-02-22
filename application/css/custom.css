@@ -10,7 +10,8 @@
 footer {
     width: 100%;
     height: 100px;
-    position: absolute;
+    position: sticky;
+    bottom: 0;
 }
 
 footer img {
@@ -18,10 +19,12 @@ footer img {
     margin-left: 20px;
 }
 
-footer button {
+#chatButton {
     float: right;
     margin-right: 30px;
-    width: 250px;
+    width: 24rem;
+    right: 0;
+    position: absolute;
 }
 
 .form-signin {
@@ -64,11 +67,6 @@ main {
     min-height: 75vh;
 }
 
-#chatform {
-    visibility: hidden;
-    display: block;
-}
-
 aside {
     float: left;
 }
@@ -76,16 +74,60 @@ aside {
 #reviewWrapper {
     margin: 30px;
     padding: 40px;
+    float: right;
+}
+
+#reviewWrapper section{
+    padding: 0 50px;
+    width: 70%;
+    float: right;
 }
 
 #commentSection {
+    clear: both;
     border-top: 1px solid #000;
-    width: 60%;
-    float: right;
     padding: 20px;
+    margin-left: 50px;
+    
 }
 
-#contentSize {
-    clear: both;
-    width: 70%;
+.error{
+    color:#ff0000
+}
+
+#chatspace{
+    height: 40rem;
+    width: 25rem;
+    z-index: 1000;
+    position: absolute;
+    bottom:100;
+    right: 20;
+    background-color: #ddd;
+    border-radius: 25px;
+    visibility: visible;
+    float: right;
+    -webkit-box-shadow: 0px -2px 17px -2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -2px 17px -2px rgba(0,0,0,0.75);
+    box-shadow: 0px -2px 17px -2px rgba(0,0,0,0.75);
+}
+
+#chatspace form{
+    z-index: 2000;
+    width: 100%;
+    margin: 10px 0px;
+}
+
+#chatspace input[type="text"]{
+    width:80%;
+    background-color: none;
+    padding: 10px;
+    border-radius: 50px;
+    -webkit-box-shadow: 4px 10px 17px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 4px 10px 17px 0px rgba(0,0,0,0.75);
+    box-shadow: 4px 10px 17px 0px rgba(0,0,0,0.75);
+    border: none;
+}
+
+#chatspace input[type="text"]:focus{
+    outline: none;
 }

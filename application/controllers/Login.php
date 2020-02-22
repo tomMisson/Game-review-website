@@ -10,7 +10,6 @@ class Login extends CI_Controller{
         $this->load->helper('url');
         $this->load->helper('url_helper');
         $this->load->helper('html');
-        $this->load->helper('cookie');
 
         $this->load->model('UsersModel');
     }
@@ -47,11 +46,17 @@ class Login extends CI_Controller{
             $this->session->set_userdata($sessionData);
             redirect(base_url());
         }
+        else
+        {
+            $data['body'] = 'login';
+            $data['errorMSG'] = 'Unsuccessful login, please check username and password';
+            $this->load->view('template', $data);
+        }
     }
 
     public function logout()
     {
-        $_SESSION = array();
+        $this->session->sess_destroy();
         redirect(base_url());
     }
 }

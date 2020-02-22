@@ -11,8 +11,8 @@
 
             $img = base_url() . "application/images/" . $image;
             echo"
-            <div class='card' style='width: 18rem;'>
-              <img class='card-img-top' src='$img' alt='Card image'>
+            <div class='card' style='width: 21rem;'>
+              <img class='card-img-top' src='$img' alt='Card image' width='400' height='500'>
               <div class='card-body'>
                 <h5 class='card-title'>$title</h5>
                 <p class='card-text'>$desc</p>
