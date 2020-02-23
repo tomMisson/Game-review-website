@@ -64,18 +64,18 @@ else{
           </li>
         </ul>
 
-        <form class="form-inline my-2 my-lg-0" method="POST" action="Review/search">
+        <form class="form-inline my-2 my-lg-0" method="POST" action=<?php site_url('Review/search')?>>
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name='searchtxt'>
             <button name='searchBTN' class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-        
           <?php
             if($this->session->has_userdata('loggedIn'))
             {
-              echo " <button name='loginBTN' class='btn btn-outline-info my-2 my-sm-1 login' type='submit'>Logout</button>";
+              echo "<form class='form-inline my-2 my-lg-0' action=".site_url('Login/logout')." method='post'><button name='loginBTN' class='btn btn-outline-info my-2 my-sm-1 login' type='submit'>Logout</button></form>
+              <form class='form-inline my-3 my-lg-0' action=".site_url('Login/profile')." method='post'><button name='profileBTN' class='btn btn-outline-info my-2 my-sm-1 login' type='submit'>Profile</button></form>";
             }
             else{
-              echo "<button name='loginBTN' class='btn btn-outline-info my-2 my-sm-1 login' type='submit'>Login</button>";
+              echo "<form action=".site_url('Login/index')." class='form-inline my-2 my-lg-0' method='post'><button name='loginBTN' class='btn btn-outline-info my-2 my-sm-1 login' type='submit'>Login</button></form>";
             }
           ?>
       </div>

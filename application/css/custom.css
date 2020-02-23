@@ -12,6 +12,7 @@ footer {
     height: 100px;
     position: sticky;
     bottom: 0;
+    background-color: #eee;
 }
 
 footer img {
@@ -79,7 +80,7 @@ aside {
 
 #reviewWrapper section{
     padding: 0 50px;
-    width: 70%;
+    width: 60%;
     float: right;
 }
 
@@ -130,4 +131,16 @@ aside {
 
 #chatspace input[type="text"]:focus{
     outline: none;
+}
+
+.Searchterm{
+    text-align: left;
+}
+
+#profile{
+    padding-top: 10%;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }

@@ -33,6 +33,8 @@ class Login extends CI_Controller{
             {
                 $darkmode = $user->DarkMode;
                 $UID = $user->UID;
+                $isAdmin = $user->IsAdmin;
+
             }
 
             $sessionData = array(
@@ -40,7 +42,8 @@ class Login extends CI_Controller{
                 'username' => $username,
                 'dark_mode' => $darkmode,
                 'UID' => $UID,
-                'loggedIn' => TRUE
+                'loggedIn' => TRUE,
+                'admin' => $isAdmin
             );
 
             $this->session->set_userdata($sessionData);
@@ -52,6 +55,12 @@ class Login extends CI_Controller{
             $data['errorMSG'] = 'Unsuccessful login, please check username and password';
             $this->load->view('template', $data);
         }
+    }
+
+    public function profile()
+    {
+        $data['body'] = 'profile';
+        $this->load->view('template', $data);
     }
 
     public function logout()

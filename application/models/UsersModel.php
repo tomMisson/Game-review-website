@@ -5,7 +5,7 @@ class UsersModel extends CI_Model
 
     public function retrive_user_data($username)
     {
-        $query = $this->db->query("SELECT UID, UserName, DarkMode FROM users WHERE UserName='$username'");
+        $query = $this->db->query("SELECT UID, UserName, DarkMode, IsAdmin FROM users WHERE UserName='$username'");
 
         return $query->result();
     }
