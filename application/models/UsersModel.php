@@ -16,6 +16,11 @@ class UsersModel extends CI_Model
 
         return count($query->result());
     }
+
+    public function update_dark_mode($data)
+    {
+        $query = $this->db->query("SELECT UserName, UserPassword FROM users WHERE UserName='$username' and UserPassword='$password'");
+    }
 }
 
 ?>
