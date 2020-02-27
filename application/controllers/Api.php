@@ -20,7 +20,7 @@ class Api extends CI_Controller{
        redirect(base_url());
     }
 
-    public function updateDM()
+    public function dark_mode()
     {
         $data = $this->input->post('');
         $this->UsersModel->update_dark_mode($data);

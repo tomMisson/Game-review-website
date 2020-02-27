@@ -25,9 +25,8 @@ function handler(req, res) {
 io.on('connection', (socket) => {
     console.log('User connected to the server');
 
-    io.on('client message', (data) => {
+    socket.on('client message', (data) => {
         console.log(Date.now() + ' Client message: ' + data);
-        io.emit('server message', data);
-
-    })
-})
+        socket.emit('server message', data);
+    });
+});
