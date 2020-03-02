@@ -25,11 +25,16 @@ _END;
             }        
         ?>
         
-        <div id="commentsSection">
+        <div id="comments">
             <h2>Comments</h2>
-            <form>
-                <textarea rows="5" cols="100"></textarea>
+            <form method="POST" action="Review/postComments"> 
+                <textarea name="commentBody" class="form-control" id="commentTXT" placeholder="Enter a comment..." rows="2" cols="100"></textarea>
+                <button id="commentBTN" class="btn btn-primary" type="submit">Submit</button>
             </form>
+            <div id="commentarea" v-for="comment in comments">
+                <h3>{{comment.username}}</h3>
+                <p>{{comment.comment}}</p>  
+            </div>
         </div>
     <div>
 </main>

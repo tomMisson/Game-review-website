@@ -153,3 +153,7 @@ aside {
 ::-webkit-scrollbar {
     display: none;
 }
+
+#commentsSection {
+    display: inline;
+}

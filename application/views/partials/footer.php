@@ -10,5 +10,8 @@
     <button disabled id="chatButton" class="open-button btn btn-success">Chat</button>
   </footer>
 
+  <script src=<?php echo base_url('application/scripts/chat.js'); ?>></script>
+  <script src=<?php echo base_url('application/scripts/CustomVue.js'); ?>></script>
+
 </body>
 </html>

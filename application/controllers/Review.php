@@ -39,4 +39,16 @@ class Review extends CI_Controller{
         $this->load->view('template', $data);
     }
 
+    public function getComments()
+    {
+        $data['comments'] = $this->ReviewModel->getComments($this->input->get('slug'));
+        echo json_encode($data['comments']);
+    }
+
+    public function postComments()
+    {
+        $commentText = $this->input->post('commentBody');
+        $this->ReviewModel->getComments($this->input->get('slug'));
+    }
+
 }

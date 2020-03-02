@@ -45,8 +45,6 @@ else{
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 
-<script src=<?php echo base_url('application/scripts/chat.js'); ?>></script>
-
 <title>Games Reviews</title>
 </head>
 <body class="text-center">
