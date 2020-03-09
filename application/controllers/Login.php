@@ -10,6 +10,7 @@ class Login extends CI_Controller{
         $this->load->helper('url');
         $this->load->helper('url_helper');
         $this->load->helper('html');
+        $this->load->helper('cookie');
 
         $this->load->model('UsersModel');
     }
@@ -60,6 +61,8 @@ class Login extends CI_Controller{
     public function profile()
     {
         $data['body'] = 'profile';
+        $data['admin'] = $this->session->userdata("admin");
+        $data['darkmode'] = $this->session->userdata("dark_mode");
         $this->load->view('template', $data);
     }
 

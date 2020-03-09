@@ -24,16 +24,23 @@ _END;
             
             }        
         ?>
-        
         <div id="comments">
             <h2>Comments</h2>
-            <form method="POST" action="Review/postComments"> 
-                <textarea name="commentBody" class="form-control" id="commentTXT" placeholder="Enter a comment..." rows="2" cols="100"></textarea>
-                <button id="commentBTN" class="btn btn-primary" type="submit">Submit</button>
-            </form>
+            <?php
+                $username = $this->session->userdata('username');
+                if($this->session->has_userdata('loggedIn'))
+                {
+                    echo<<<_END
+                    <div id="commentForm">
+                        <textarea name="commentBody" class="form-control" id="commentTXT" placeholder="Enter a comment..." rows="2" cols="100"></textarea>
+                        <button id="commentBTN" class="btn btn-primary" type="submit" v-on:click="postComment('$username')">Submit</button>
+                    </div>
+_END;
+                }
+            ?>
             <div id="commentarea" v-for="comment in comments">
-                <h3>{{comment.username}}</h3>
-                <p>{{comment.comment}}</p>  
+                <h3>{{comment.UserName}}</h3>
+                <p>{{comment.UserComment}}</p>  
             </div>
         </div>
     <div>

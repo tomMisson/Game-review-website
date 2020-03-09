@@ -12,4 +12,23 @@ class HomeModel extends CI_Model{
         $query = $this->db->query("SELECT * FROM activereviews");
         return $query->result();
     }
+
+    public function changeDarkMode($value)
+    {
+        $user = $this->session->userdata('username');
+        $this->db->query("UPDATE users SET DarkMode = $value WHERE UserName = '$user';");
+    }
+
+    public function changeAdmin($value)
+    {
+        $user = $this->session->userdata('username');
+        $this->db->query("UPDATE users SET IsAdmin = $value WHERE UserName = '$user';");
+    }
+
+    public function isAdmin()
+    {
+        $user = $this->session->userdata('username');
+        $query = $this->db->query("SELECT IsAdmin FROM users WHERE UserName LIKE '$user';");
+        return $query->result();
+    }
 }

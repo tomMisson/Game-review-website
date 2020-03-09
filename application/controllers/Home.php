@@ -47,11 +47,20 @@ class Home extends CI_Controller{
         $this->load->view('template', $data);
     }
 
-    public function review($slug = NULL)
+    public function changeDarkmode()
     {
-        //Get the data from the model based on the slug we have.
-        //Slugs match on to the knowledge around wildcard routes.
-        //More information on slugs can be found here: https://codeigniter.com/user_guide/tutorial/news_section.html
-        
+        $this->HomeModel->changeDarkMode($this->input->post("dark-mode"));
+        $this->session->set_userdata('dark_mode',$this->input->post("dark-mode"));
+    }
+
+    public function changeAdmin()
+    {
+        $this->HomeModel->changeAdmin($this->input->post("admin"));
+        $this->session->set_userdata('admin',$this->input->post("admin"));
+    }
+
+    public function getStatus()
+    {
+        return $this->HomeModel->isAdmin();
     }
 }

@@ -47,8 +47,10 @@ class Review extends CI_Controller{
 
     public function postComments()
     {
-        $commentText = $this->input->post('commentBody');
-        $this->ReviewModel->getComments($this->input->get('slug'));
+        $commentText = $this->input->post('text');
+        $slug = $this->input->post('slug');
+        $username = $this->session->userdata('username');
+        $response = $this->ReviewModel->postComment($commentText, $username,  $slug);
     }
 
 }

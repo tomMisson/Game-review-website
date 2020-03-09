@@ -154,6 +154,17 @@ aside {
     display: none;
 }
 
-#commentsSection {
-    display: inline;
+#commentForm {
+    display: inline-grid;
+    padding: 10px
+}
+
+#commentForm button {
+    margin: 10px 0px;
+}
+
+#commentarea {
+    text-align: left;
+    margin-left: 20%;
+    width: 60%;
 }

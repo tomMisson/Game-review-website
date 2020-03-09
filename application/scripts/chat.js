@@ -2,15 +2,16 @@ $(document).ready(() => {
 
     var isVisible = false;
     var socket = io.connect("http://localhost:8080");
+    var admin = $.get("http://localhost:82/1CWK50-FRAMEWORKS/index.php/getAdmin", function(data, status) { return data })
 
     $("#submit").click(function() {
-        socket.emit('client message', $("#message").get(0).value);
+        socket.emit('client message', $("#message").get(0).value, );
         $("#message").get(0).value = "";
     });
 
     socket.on("server message", (data) => {
         console.log(data);
-        $("#textspace").append(data + "<br>");
+        $("#textspace").append("<p>" + data + "</p>");
     });
 
 
@@ -39,27 +40,22 @@ $(document).ready(() => {
 
     $("#darkSwitch").change(function() {
         if (this.checked) {
-            $('link[href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"]').attr('href', 'https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/darkly/bootstrap.min.css');
-            document.cookie = "dark_mode=1";
-            $.ajax({
-                type: "POST",
-                url: "http://localhost:82/1CWK50-FRAMEWORKS/index.php/Api/dark_mode",
-                data: "1",
-                success: function() {
-                    console.log("Updated");
-                }
-            });
+            $.post("http://localhost:82/1CWK50-FRAMEWORKS/index.php/dm", { "dark-mode": 1 }, function(data, status) {});
+            location.reload();
         } else {
-            $('link[href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.4.1/darkly/bootstrap.min.css"]').attr('href', 'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
-            document.cookie = "dark_mode=0";
-            $.ajax({
-                type: "POST",
-                url: "http://localhost:82/1CWK50-FRAMEWORKS/index.php/Api/dark_mode",
-                data: "0",
-                success: function() {
-                    console.log("Updated");
-                }
-            });
+            $.post("http://localhost:82/1CWK50-FRAMEWORKS/index.php/dm", { "dark-mode": 0 }, function(data, status) {});
+            location.reload();
         }
     });
+
+    $("#adminSwitch").change(function() {
+        if (this.checked) {
+            document.cookie = "admin=1";
+            $.post("http://localhost:82/1CWK50-FRAMEWORKS/index.php/admin", { "admin": 1 }, function(data, status) {});
+        } else {
+            document.cookie = "admin=0";
+            $.post("http://localhost:82/1CWK50-FRAMEWORKS/index.php/admin", { "admin": 0 }, function(data, status) {});
+        }
+    });
+
 });

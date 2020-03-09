@@ -17,4 +17,15 @@ class ReviewModel extends CI_Model{
         $query = $this->db->query("SELECT DISTINCT GameName, GameBlurb, slug FROM activereviews WHERE slug LIKE '%$term%'");
         return $query->result();
     }
+
+    public function getComments($slug)
+    {
+        $query = $this->db->query("SELECT UserComment,UserName FROM gamescomments INNER JOIN users on users.UID = gamescomments.UserID WHERE ReviewID = (SELECT ID FROM activereviews WHERE slug='$slug')");
+        return $query->result();
+    }
+
+    public function postComment($commentText,$username ,$slug)
+    {
+        $query = $this->db->query("INSERT INTO `gamescomments`(`UserID`, `ReviewID`, `UserComment`) VALUES ((SELECT UID FROM users WHERE UserName='$username' LIMIT 1), (SELECT ID FROM activereviews WHERE slug='$slug'), '$commentText')");
+    }
 }
