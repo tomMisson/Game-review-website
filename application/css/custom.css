@@ -150,10 +150,6 @@ aside {
     color: #000;
 }
 
-::-webkit-scrollbar {
-    display: none;
-}
-
 #commentForm {
     display: inline-grid;
     padding: 10px

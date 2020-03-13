@@ -1,17 +1,25 @@
 $(document).ready(() => {
 
     var isVisible = false;
+    var isAdmin = false;
     var socket = io.connect("http://localhost:8080");
-    var admin = $.get("http://localhost:82/1CWK50-FRAMEWORKS/index.php/getAdmin", function(data, status) { return data })
 
     $("#submit").click(function() {
-        socket.emit('client message', $("#message").get(0).value, );
+        $.get("http://localhost:82/1CWK50-FRAMEWORKS/index.php/dm", function(data, status) {if (data==="1"){isAdmin = true}});
+        socket.emit('client message', $("#message").get(0).value, isAdmin);
         $("#message").get(0).value = "";
     });
 
-    socket.on("server message", (data) => {
+    socket.on("server message", (data,admin) => {
         console.log(data);
-        $("#textspace").append("<p>" + data + "</p>");
+
+        if(admin){
+            $("#textspace").append("<p><strong>" + data + "</strong></p>");
+        }
+        else
+        {
+            $("#textspace").append("<p>" + data + "</p>");
+        }
     });
 
 

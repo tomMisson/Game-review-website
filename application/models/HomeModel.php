@@ -28,6 +28,10 @@ class HomeModel extends CI_Model{
     public function isAdmin()
     {
         $user = $this->session->userdata('username');
+        if($user == NULL)
+        {
+            return "0";
+        }
         $query = $this->db->query("SELECT IsAdmin FROM users WHERE UserName LIKE '$user';");
         return $query->result();
     }

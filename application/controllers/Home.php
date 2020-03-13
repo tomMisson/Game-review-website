@@ -61,6 +61,11 @@ class Home extends CI_Controller{
 
     public function getStatus()
     {
-        return $this->HomeModel->isAdmin();
+        $result = $this->HomeModel->isAdmin();
+
+        foreach($result as $res)
+        {
+            echo $res->IsAdmin;
+        }
     }
 }
