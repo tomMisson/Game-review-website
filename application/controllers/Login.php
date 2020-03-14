@@ -10,17 +10,18 @@ class Login extends CI_Controller{
         $this->load->helper('url');
         $this->load->helper('url_helper');
         $this->load->helper('html');
-        $this->load->helper('cookie');
 
-        $this->load->model('UsersModel');
+        $this->load->model('UsersModel');//Loads database queries class
     }
 
+    //loads the front page
     public function index()
     {
         $data['body'] = 'login';
         $this->load->view('template', $data);
     }
 
+    //gets data from the form, validates it's the same as that in the db
     public function login()
     {
         $username = $this->input->post('username');
@@ -37,7 +38,7 @@ class Login extends CI_Controller{
                 $isAdmin = $user->IsAdmin;
 
             }
-
+            // if the credentials match, the users data is added to a session
             $sessionData = array(
 
                 'username' => $username,
@@ -48,16 +49,17 @@ class Login extends CI_Controller{
             );
 
             $this->session->set_userdata($sessionData);
-            redirect(base_url());
+            redirect(base_url());// they are then sent to the front page
         }
         else
         {
             $data['body'] = 'login';
-            $data['errorMSG'] = 'Unsuccessful login, please check username and password';
+            $data['errorMSG'] = 'Unsuccessful login, please check username and password';// if it fails it will show an error message 
             $this->load->view('template', $data);
         }
     }
 
+    //gets the users data from the session and passes it to the profile view
     public function profile()
     {
         $data['body'] = 'profile';
@@ -66,6 +68,7 @@ class Login extends CI_Controller{
         $this->load->view('template', $data);
     }
 
+    //Destroys the session and sends you home, invalidating the current session
     public function logout()
     {
         $this->session->sess_destroy();

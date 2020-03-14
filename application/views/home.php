@@ -2,14 +2,15 @@
   <div class="container">
       <div class="row">
           <?php
-          foreach ($result as $row)
+          foreach ($result as $row) // loops through the list of reviews
           {
+            //breaks down individual columns of db in to variables
             $title = $row->GameName;
             $desc = $row->GameBlurb;
             $image = $row->ReviewImage;
             $slug = $row->slug;
 
-            $img = base_url() . "application/images/" . $image;
+            $img = base_url() . "application/images/" . $image; //adds direct pathing for images
             echo"
             <div class='card' style='width: 21rem;'>
               <img class='card-img-top' src='$img' alt='Card image' width='400' height='500'>

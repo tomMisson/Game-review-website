@@ -18,11 +18,13 @@ class Review extends CI_Controller{
         // Consider creating new Models for different functionality.
     }
 
+    // redirects to home if you do /reviews... means no direct access to non specific reviews
     public function index()
     {
         redirect(base_url());
     }
 
+    //Retrives data for a specific review
     public function review($slug)
     {
         $data['body'] = 'review';
@@ -32,6 +34,7 @@ class Review extends CI_Controller{
         $this->load->view('template', $data);
     }
 
+    //Searches the database for reviews similar to the search term 
     public function search()
     {
         $data['resultList'] = $this->ReviewModel->searchForReview($this->input->post('searchtxt'));
@@ -39,12 +42,14 @@ class Review extends CI_Controller{
         $this->load->view('template', $data);
     }
 
+    //Retrives all comments for a specif review
     public function getComments()
     {
         $data['comments'] = $this->ReviewModel->getComments($this->input->get('slug'));
         echo json_encode($data['comments']);
     }
 
+    //Adds a comment to the database
     public function postComments()
     {
         $commentText = $this->input->post('text');

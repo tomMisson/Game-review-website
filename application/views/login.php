@@ -3,9 +3,9 @@
             <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 
             <?php
-            if(isset($errorMSG))
+            if(isset($errorMSG))// If login fails, a message is passed back 
             {
-                    echo "<strong><p class='error'>$errorMSG</p></strong>";
+                echo "<strong><p class='error'>$errorMSG</p></strong>";
             }
             ?>
             

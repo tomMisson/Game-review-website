@@ -8,7 +8,7 @@ class HomeModel extends CI_Model{
     //Get for all games
     public function getGame()
     {
-        // You can use the select, from, and where functions to simplify this as seen in Week 13.
+        //gets all game data
         $query = $this->db->query("SELECT * FROM activereviews");
         return $query->result();
     }
@@ -16,13 +16,13 @@ class HomeModel extends CI_Model{
     public function changeDarkMode($value)
     {
         $user = $this->session->userdata('username');
-        $this->db->query("UPDATE users SET DarkMode = $value WHERE UserName = '$user';");
+        $this->db->query("UPDATE users SET DarkMode = $value WHERE UserName = '$user';");//updates the dark mode when toggled
     }
 
     public function changeAdmin($value)
     {
         $user = $this->session->userdata('username');
-        $this->db->query("UPDATE users SET IsAdmin = $value WHERE UserName = '$user';");
+        $this->db->query("UPDATE users SET IsAdmin = $value WHERE UserName = '$user';");//updates the admin mode when toggled
     }
 
     public function isAdmin()
@@ -32,7 +32,7 @@ class HomeModel extends CI_Model{
         {
             return "0";
         }
-        $query = $this->db->query("SELECT IsAdmin FROM users WHERE UserName LIKE '$user';");
+        $query = $this->db->query("SELECT IsAdmin FROM users WHERE UserName LIKE '$user';"); //returns a 1 or 0 if the user is an admin or not and if they're not logged in then it defaults to 0
         return $query->result();
     }
 }

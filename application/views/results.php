@@ -1,10 +1,12 @@
 <main>
 <h1>Reviews</h1>
 <?php
+//itterates through the list of results if there is any
 if(count($resultList)>0)
 {
     foreach($resultList as $result)
     {
+        //takes db data and stores it
         $name = $result->GameName;
         $slug = $result->slug;
         $blurb = $result->GameBlurb;

@@ -47,25 +47,29 @@ class Home extends CI_Controller{
         $this->load->view('template', $data);
     }
 
+    //Toggles dark mode
     public function changeDarkmode()
     {
+        //updates session variable and passes the new darkmode value in to the database to persist the data
         $this->HomeModel->changeDarkMode($this->input->post("dark-mode"));
         $this->session->set_userdata('dark_mode',$this->input->post("dark-mode"));
     }
 
+    //Toggles admin
     public function changeAdmin()
     {
+        //updates session variable and passes the new admin value in to the database to persist the data
         $this->HomeModel->changeAdmin($this->input->post("admin"));
         $this->session->set_userdata('admin',$this->input->post("admin"));
     }
 
+    //retrives admin status for chat system
     public function getStatus()
     {
-        $result = $this->HomeModel->isAdmin();
-
+        $result = $this->HomeModel->isAdmin(); //fetch from model
         foreach($result as $res)
         {
-            echo $res->IsAdmin;
+            echo $res->IsAdmin;//display value to be recived by a AJAX request
         }
     }
 }
