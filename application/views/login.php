@@ -14,5 +14,6 @@
             <label for="inputPassword" class="sr-only">Password</label>
             <input type="password" name= "password" id="inputPassword" class="form-control" placeholder="Password" required>
             <button name="submit" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <small>To add a new user, enter the details you want to sign them up with</small>
         </form>
 </main>

@@ -6,14 +6,19 @@ $(document).ready(() => {
 
     //When submit is pressed to send a message to the server
     $("#submit").click(function() {
-        $.get("http://localhost:82/1CWK50-FRAMEWORKS/index.php/dm", function(data, status) {if (data==="1"){isAdmin = true}});
-        socket.emit('client message', $("#message").get(0).value, isAdmin);
-        $("#message").get(0).value = "";
+        $.get("http://localhost:82/1CWK50-FRAMEWORKS/index.php/getAdmin", async function(data, status) {await data; 
+        if (data==="1")
+        {
+            isAdmin = true
+        }
+     
+            socket.emit('client message', $("#message").get(0).value, isAdmin);
+            $("#message").get(0).value = "";
+        });
     });
 
     //When a message is recived from the server, it differentiates if it was an admin message or not
     socket.on("server message", (data,admin) => {
-        console.log(data);
 
         if(admin){
             $("#textspace").append("<p><strong>" + data + "</strong></p>");

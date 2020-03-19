@@ -16,6 +16,11 @@ class UsersModel extends CI_Model
 
         return count($query->result());
     }
+
+    public function addUser($username, $password)
+    {
+        $query = $this->db->query("INSERT INTO users(UserName, UserPassword) Values ('$username','$password')");//validates that the users credentials match on login
+    }
 }
 
 ?>

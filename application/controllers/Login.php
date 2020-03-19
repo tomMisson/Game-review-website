@@ -6,15 +6,15 @@ class Login extends CI_Controller{
     public function __construct()
     {
         parent::__construct();
-        // Consider if it would be best to autoload some of the helpers from here.
         $this->load->helper('url');
         $this->load->helper('url_helper');
         $this->load->helper('html');
+        $this->load->helper('cookie');
 
         $this->load->model('UsersModel');//Loads database queries class
     }
 
-    //loads the front page
+    //loads the login page
     public function index()
     {
         $data['body'] = 'login';
@@ -53,10 +53,9 @@ class Login extends CI_Controller{
         }
         else
         {
-            $data['body'] = 'login';
-            $data['errorMSG'] = 'Unsuccessful login, please check username and password';// if it fails it will show an error message 
-            $this->load->view('template', $data);
+            $this->UsersModel->addUser($username,$password);
         }
+    
     }
 
     //gets the users data from the session and passes it to the profile view
